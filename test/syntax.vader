@@ -1,0 +1,29 @@
+Execute (set filetype and enable syntax):
+  set filetype=svelte
+  syntax enable
+
+Given svelte (simple variable assignment inside script tag):
+  <script>
+    let foo = 123;
+  </script>
+
+Do svelte (get syntax group under 'let'):
+  call cursor(2, 5)
+  let g:group = synIDattr(synID(line('.'), col('.'), 1), 'name')
+
+Expect svelte (keyword recognized as svelteScriptKeyword):
+  AssertEqual 'svelteScriptKeyword', g:group
+
+
+Given svelte (a tag example):
+  <Foo>
+    <Bar/>
+  </Foo>
+
+Do svelte (get syntax group under 'Bar'):
+  call cursor(2, 7)
+  let g:group = synIDattr(synID(line('.'), col('.'), 1), 'name')
+
+Expect svelte (tag name recognized as svelteTagName):
+  AssertEqual 'svelteTagName', g:group
+

@@ -1,0 +1,12 @@
+set nocompatible
+filetype off
+
+set runtimepath^=vader.vim
+set runtimepath^=.
+
+syntax enable
+filetype plugin indent on
+set encoding=utf-8
+set noswapfile
+
+au BufRead,BufNewFile *.svelte set filetype=svelte
